@@ -428,3 +428,24 @@ GET だけを受け取るときには, ```methods=["GET"]``` のようにする.
 | GET  | ```request.args.get``` |
 | POST | ```request.form```     |
 
+## 8 外部のPython 関数から GET/POST する
+
+[参考URL](<https://qiita.com/hoto17296/items/8fcf55cc6cd823a18217>)
+
+そろそろ本題に入る.
+
+predict.py にて各モデルのスコアをサーバに投げる必要がある. その方法を模索する.
+
+まず, 問題を単純化するため, 外部のPython 関数からサーバに文字列を GET/POST する.
+
+### 8.1 ディレクトリ構成
+
+throw_request.py を追加
+
+```
+$ pwd
+/c/Users/Owner/Desktop/flask-project
+$ ls
+README.md  server.py  static/  templates/  throw_request.py
+```
+
