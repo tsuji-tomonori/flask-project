@@ -55,3 +55,26 @@ if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8888)
 ```
 
+### 3.3 プログラムの実行
+
+> linux (xubuntu) の場合, 実行した際に表示される url をクリックするだけで表示された
+
+事前に ipconfig 等で使用している PC の IPアドレスを確認しておく.
+
+```
+C:\Users\Owner\Desktop\flask-project>python server.py
+ * Serving Flask app "server" (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 332-831-366
+ * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
+```
+
+server.py をコマンドプロンプト上で実行すると上記のようになる. (はず)  
+
+その後, [IPアドレス:ポート番号] に接続すると "Hello" と表示される.
+
