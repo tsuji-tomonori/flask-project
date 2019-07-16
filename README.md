@@ -143,3 +143,8 @@ if __name__ == "__main__":
 </html>
 ```
 
+## 5 CSS と JavaScript を読み込む
+
+4章 では html ファイルを表示した.
+
+次は, CSS, JavaScript を読み込めるようにする. (これで普通のサイトっぽいものが作れるはず)
