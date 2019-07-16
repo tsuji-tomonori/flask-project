@@ -208,7 +208,18 @@ window.onload = function () {
 
 ## 6 Python の値をhtml に埋め込む
 
-Flask では [jinja2](<http://jinja.pocoo.org/docs/2.9/>) というテンプレートエンジンが使用できる.
+Flask では [Jinja2](<http://jinja.pocoo.org/docs/2.9/>) というテンプレートエンジンが使用できる.
 
 これを利用することで, html ファイルにPython の値を簡単に埋め込むことができる.
+
+### 6.1 Jinja2 インストール
+
+```
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\Owner>pip install jinja2
+Requirement already satisfied: jinja2 in c:\users\owner\appdata\local\programs\python\python37-32\lib\site-packages (2.10.1)
+Requirement already satisfied: MarkupSafe>=0.23 in c:\users\owner\appdata\local\programs\python\python37-32\lib\site-packages (from jinja2) (1.1.1)
+```
 
