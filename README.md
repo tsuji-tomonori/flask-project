@@ -518,3 +518,54 @@ if __name__ == "__main__":
     print(post_request(data))
 ```
 
+### 8.4 まとめ
+
+8章のプログラムを全てつなげると以下のようになる.
+
+```python
+# throw_request.py
+import urllib.request
+import urllib.parse
+
+URL = "" # URL を記述する
+
+
+def get_request(params):
+    """ GET リクエストをサーバに投げる関数.
+
+    Args:
+        params (dict): リクエストパラメータ
+
+    Return:
+        str: サーバから受け取った文字列
+    """
+    req = urllib.request.Request('{}?{}'.format(
+        URL, urllib.parse.urlencode(params)))
+    with urllib.request.urlopen(req) as res:
+        body = res.read()
+    return body.decode("utf-8")
+
+
+def post_request(data):
+    """ POST リクエストをサーバに投げる関数.
+
+    Args:
+        data (dict): リクエストパラメータ
+
+    Reutrn:
+        str: サーバから受け取った文字列
+    """
+    data = urllib.parse.urlencode(data).encode('utf-8')
+    req = urllib.request.Request(URL, data=data)
+    with urllib.request.urlopen(req) as res:
+        body = res.read().decode()
+    return body
+
+
+if __name__ == "__main__":
+    params = {"get_value": "from get (python)", }
+    print(get_request(params))
+    data = {"post_value": "from post (python)", }
+    print(post_request(data))
+```
+
