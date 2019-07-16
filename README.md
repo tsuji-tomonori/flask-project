@@ -449,3 +449,37 @@ $ ls
 README.md  server.py  static/  templates/  throw_request.py
 ```
 
+### 8.2 GET リクエストを投げる
+
+`Request` オブジェクトを作成し、`urlopen` に渡すことでリクエストが送信される.
+
+今回は7章のように get_value を from get (python) としてサーバにリクエストを投げる.
+
+```python
+# throw_request.py
+import urllib.request
+
+URL = "" # URL を記述する
+
+
+def get_request(params):
+    """ GET リクエストをサーバに投げる関数.
+
+    Args:
+        params (dict): リクエストパラメータ
+
+    Return:
+        object: http.client.HTTPResponse オブジェクト
+    """
+    req = urllib.request.Request('{}?{}'.format(
+        URL, urllib.parse.urlencode(params)))
+    with urllib.request.urlopen(req) as res:
+        body = res.read()
+    return body
+
+
+if __name__ == "__main__":
+    params = {"get_value": "from get (python)"}
+    get_request(params)
+```
+
