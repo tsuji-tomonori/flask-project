@@ -205,3 +205,10 @@ window.onload = function () {
 ```
 
 もし, 上手く更新されない場合, キャッシュを消すと吉.
+
+## 6 Python の値をhtml に埋め込む
+
+Flask では [jinja2](<http://jinja.pocoo.org/docs/2.9/>) というテンプレートエンジンが使用できる.
+
+これを利用することで, html ファイルにPython の値を簡単に埋め込むことができる.
+
