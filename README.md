@@ -25,3 +25,16 @@ Type "help", "copyright", "credits" or "license" for more information.
 '1.1.1'
 ```
 
+## 3 最小構成で実行してみる
+
+### 3.1 ディレクトリ構成
+
+server.py を追加
+
+```
+$ pwd
+/c/Users/Owner/Desktop/flask-project
+$ ls
+README.md  server.py
+```
+
