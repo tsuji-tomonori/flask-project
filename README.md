@@ -325,3 +325,8 @@ render_template の第二引数以降に値を指定することで, 値を渡�
 
 今回はCSS, JavaScript は使用しないため, ```<link>``` ```<script>``` タグは削除した.
 
+## 7 GET/POST で値を渡す
+
+Flask では GET/POST を利用できる.
+
+これを使ってデータをサーバへリクエスト送信する際に使用する.
