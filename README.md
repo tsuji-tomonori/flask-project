@@ -148,3 +148,18 @@ if __name__ == "__main__":
 4章 では html ファイルを表示した.
 
 次は, CSS, JavaScript を読み込めるようにする. (これで普通のサイトっぽいものが作れるはず)
+
+### 5.1 ディレクトリ構造
+
+1. static フォルダーを作成 (static という名前でないと動作しない)
+2. static フォルダーの中に index.css, index.js を作成
+
+```
+$ pwd
+/c/Users/Owner/Desktop/flask-project
+$ ls
+README.md  server.py  static/  templates/
+$ ls static/
+index.css  index.js
+```
+
