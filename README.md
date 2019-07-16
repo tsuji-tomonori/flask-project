@@ -358,3 +358,73 @@ GET/POST はどちらも入力フォームのデータをサーバへリクエ�
   * BODY部分(form) に含まれるため
 * テキスト, バイナリどちらでも送信可能
 * POST 送信後にブラウザボタン押下で有効期限切れが発生する可能性がある
+
+### 7.2 コードの変更
+
+1. index.html から /test に GET/POST をする
+2. server.py にてその値を取得し表示する
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask-Project</title>
+</head>
+
+<body>
+    <form action="/test" method="get">
+        <button name="get_value" value="from get">get submit</button>
+    </form>
+    <form action="/test" method="post">
+        <button name="post_value" value="from post">get submit</button>
+    </form>
+</body>
+
+</html>
+```
+
+ index.html ではボタンを二つ作成し、/test に get と post リクエストを投げられるように変更.
+
+```python
+# server.py
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    if request.method == "GET":
+        res = request.args.get("get_value")
+    elif request.method == "POST":
+        res = request.form["post_value"]
+
+    return res
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run(host="0.0.0.0", port=8888)
+```
+
+GET/POST で値を取得するには、request をインポートする.
+
+```@app.route("/test", methods=["GET", "POST"])``` にて GET と POST の受け取りを指定している.
+
+GET だけを受け取るときには, ```methods=["GET"]``` のようにする.
+
+また, それぞれの値の取得方法は以下の通り.
+
+|      | 値を取得する関数       |
+| ---- | ---------------------- |
+| GET  | ```request.args.get``` |
+| POST | ```request.form```     |
+

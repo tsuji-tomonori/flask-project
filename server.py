@@ -1,17 +1,21 @@
 # server.py
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def index():
-    title = "RakugakiBattle"
-    model1 = {"class": 10, "epochs": 100}
-    model2 = {"class": 345, "epochs": 100}
-    model_list = [model1, model2]
-    return render_template("index.html", title=title, model_list=model_list)
+    return render_template("index.html")
 
+@app.route("/test", methods=["GET", "POST"])
+def test():
+    if request.method == "GET":
+        res = request.args.get("get_value")
+    elif request.method == "POST":
+        res = request.form["post_value"]
+
+    return res
 
 if __name__ == "__main__":
     app.debug = True

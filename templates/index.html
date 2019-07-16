@@ -10,21 +10,12 @@
 </head>
 
 <body>
-    <p>{{ title }}</p>
-    <hr>
-    <p>作成したモデル</p>
-    <table>
-        <tr>
-            <td>クラス数</td>
-            <td>epochs</td>
-        </tr>
-        {% for x in model_list %}
-        <tr>
-            <td>{{ x["class"] }}</td>
-            <td>{{ x["epochs"] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+    <form action="/test" method="get">
+        <button name="get_value" value="from get">get submit</button>
+    </form>
+    <form action="/test" method="post">
+        <button name="post_value" value="from post">get submit</button>
+    </form>
 </body>
 
 </html>
