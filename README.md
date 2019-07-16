@@ -430,7 +430,9 @@ GET だけを受け取るときには, ```methods=["GET"]``` のようにする.
 
 ## 8 外部のPython 関数から GET/POST する
 
-[参考URL](<https://qiita.com/hoto17296/items/8fcf55cc6cd823a18217>)
+[参考URL1](<https://qiita.com/hoto17296/items/8fcf55cc6cd823a18217>)
+
+[参考URL2](<https://python.civic-apps.com/http-request-post-get/>)
 
 そろそろ本題に入る.
 
@@ -469,17 +471,50 @@ def get_request(params):
         params (dict): リクエストパラメータ
 
     Return:
-        object: http.client.HTTPResponse オブジェクト
+        str: サーバから受け取った文字列
     """
     req = urllib.request.Request('{}?{}'.format(
         URL, urllib.parse.urlencode(params)))
     with urllib.request.urlopen(req) as res:
         body = res.read()
-    return body
+    return body.decode("utf-8")
 
 
 if __name__ == "__main__":
-    params = {"get_value": "from get (python)"}
-    get_request(params)
+    params = {"get_value": "from get (python)", }
+    print(get_request(params))
+```
+
+### 8.3 POST リクエストを投げる
+
+POSTリクエストする場合はRequestオブジェクトを作ってdataを渡す必要がある.
+dataはURLエンコードをしなければならないし, 送信データ文字コードを指定してバイト文字列を作る必要がある.
+
+以下, 該当する関数のみ.
+
+```python
+# throw_request.py
+import urllib.parse
+
+def post_request(data):
+    """ POST リクエストをサーバに投げる関数.
+
+    Args:
+        data (dict): リクエストパラメータ
+
+    Reutrn:
+        str: サーバから受け取った文字列
+    """
+    data = urllib.parse.urlencode(data).encode('utf-8')
+    req = urllib.request.Request(URL, data=data)
+    with urllib.request.urlopen(req) as res:
+        body = res.read().decode()
+    return body
+
+if __name__ == "__main__":
+    #params = {"get_value": "from get (python)", }
+    #print(get_request(params))
+    data = {"post_value": "from post (python)", }
+    print(post_request(data))
 ```
 
