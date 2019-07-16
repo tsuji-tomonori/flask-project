@@ -107,3 +107,39 @@ $ ls templates/
 index.html
 ```
 
+### 4.2 コードの追加/変更
+
+```python
+# server.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run(host="0.0.0.0", port=8888)
+```
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask-Project</title>
+</head>
+
+<body>
+    <h1>Hello from index.html</h1>
+</body>
+
+</html>
+```
+
