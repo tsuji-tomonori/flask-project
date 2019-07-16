@@ -223,3 +223,105 @@ Requirement already satisfied: jinja2 in c:\users\owner\appdata\local\programs\p
 Requirement already satisfied: MarkupSafe>=0.23 in c:\users\owner\appdata\local\programs\python\python37-32\lib\site-packages (from jinja2) (1.1.1)
 ```
 
+### 6.2 Jinja2 基本的な使い方
+
+[参考URL](<https://www.python.ambitious-engineer.com/archives/760>)
+
+[jinja2｜it-note 1.0 ドキュメント](<https://maman-it-information.readthedocs.io/ja/latest/src/python/jinja2/jinja2.html>)
+
+#### 6.2.1 概要
+
+| 記法      | 概要           |
+| --------- | -------------- |
+| {% ... %} | 制御構文       |
+| {{ ... }} | 変数の埋め込み |
+| {# ... #} | コメント       |
+
+#### 6.2.2 文字列の埋め込み
+
+```
+{{ 変数名 }}
+```
+
+#### 6.2.3 ループ
+
+```html
+{% for i in items %}
+  <li>{{ i }}</li>
+{% endfor %}
+```
+
+#### 6.2.4 条件分岐
+
+```html
+{% if res.status == 'SUCCESS' %}
+    <div class="success">{{ res.status }}</div>
+{% else %}
+    <div class="error">{{ res.status }}</div>
+{% endif %}
+```
+
+### 6.3 コードの変更
+
+今回は, 作成したモデルのクラス数, epochs を表形式で表示させてみる.
+
+簡単のため, CSS, JavaScript は使用しないこととする.
+
+```python
+# server.py
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+
+@app.route("/")
+def index():
+    title = "RakugakiBattle"
+    model1 = {"class": 10, "epochs": 100}
+    model2 = {"class": 345, "epochs": 100}
+    model_list = [model1, model2]
+    return render_template("index.html", title=title, model_list=model_list)
+
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run(host="0.0.0.0", port=8888)
+```
+
+render_template の第二引数以降に値を指定することで, 値を渡すことが出来る.
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flask-Project</title>
+</head>
+
+<body>
+    <p>{{ title }}</p>
+    <hr>
+    <p>作成したモデル</p>
+    <table>
+        <tr>
+            <td>クラス数</td>
+            <td>epochs</td>
+        </tr>
+        {% for x in model_list %}
+        <tr>
+            <td>{{ x["class"] }}</td>
+            <td>{{ x["epochs"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
+```
+
+今回はCSS, JavaScript は使用しないため, ```<link>``` ```<script>``` タグは削除した.
+

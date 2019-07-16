@@ -6,14 +6,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
-    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
     <title>Flask-Project</title>
 </head>
 
 <body>
-    <h1>Hello</h1>
-    <h2 id="test">World !</h2>
+    <p>{{ title }}</p>
+    <hr>
+    <p>作成したモデル</p>
+    <table>
+        <tr>
+            <td>クラス数</td>
+            <td>epochs</td>
+        </tr>
+        {% for x in model_list %}
+        <tr>
+            <td>{{ x["class"] }}</td>
+            <td>{{ x["epochs"] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
 </body>
 
 </html>
