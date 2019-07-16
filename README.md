@@ -163,3 +163,45 @@ $ ls static/
 index.css  index.js
 ```
 
+### 5.2 コードの追加/変更
+
+CSS, JavaScript を読み込むには, html ファイルに {{ url_for() }} を使用する.
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{url_for('static', filename='index.css')}}">
+    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
+    <title>Flask-Project</title>
+</head>
+
+<body>
+    <h1>Hello</h1>
+    <h2 id="test">World !</h2>
+</body>
+
+</html>
+```
+
+``` css
+/* index.css */
+h1 {
+    color: green;
+}
+```
+
+```javascript
+// index.js
+window.onload = function () {
+    var e = document.getElementById("test");
+    e.style.color = 'red';
+}
+```
+
+もし, 上手く更新されない場合, キャッシュを消すと吉.
