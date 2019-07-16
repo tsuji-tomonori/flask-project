@@ -78,3 +78,23 @@ server.py をコマンドプロンプト上で実行すると上記のように�
 
 その後, [IPアドレス:ポート番号] に接続すると "Hello" と表示される.
 
+## 4 html ファイルを表示する
+
+3章では 文字列を表示した.
+
+今回は, html ファイルを表示する. (というかこれがやりたいはず)
+
+html ファイルを表示する場合は, index の戻り値を文字列ではなく, render_template 関数にすればOK.
+
+この関数を使用するため, render_template をインポートする必要がある.
+
+html ファイルは, templatesディレクトリに配置する必要がある (templates以外の名前だと動作しない)
+
+【やること】
+
+1. templates フォルダーを作成
+2. templates の中に html ファイルを作成
+3. index の戻り値を render_template にする
+
+
+
