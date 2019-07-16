@@ -96,5 +96,14 @@ html ファイルは, templatesディレクトリに配置する必要がある 
 2. templates の中に html ファイルを作成
 3. index の戻り値を render_template にする
 
+### 4.1 ディレクトリ構成
 
+```
+$ pwd
+/c/Users/Owner/Desktop/flask-project
+$ ls
+README.md  server.py  templates/
+$ ls templates/
+index.html
+```
 
