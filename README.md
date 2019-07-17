@@ -722,4 +722,5 @@ if __name__ == "__main__":
 
 最低限の見た目を確保するために, CSS フレームワークの力を借りて UI を作成する.
 
-今回は [UIkit](<https://getuikit.com/>) を使用してみる.
+今回は [Materialize](<https://materializecss.com/>) を使用してみる.
+
