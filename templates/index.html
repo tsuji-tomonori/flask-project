@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
@@ -16,11 +15,45 @@
 </head>
 
 <body>
-    {% for name in name_list %}
-    <div class="card-panel">
-        <span class="blue-text text-darken-2">{{ name }}</span>
+    <nav class="#26a69a teal lighten-1" id="header">
+        <div class="nav-wrapper #26a69a teal lighten-1 container">
+            <a href="" class="brand-logo">Rakugaki Battle</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="">model info</a></li>
+                <li><a href="">log</a></li>
+                <li><a href="">Ranking</a></li>
+                <li><a href="https://quickdraw.withgoogle.com/">quickdraw</a></li>
+                <li><a href="http://www-ie.meijo-u.ac.jp/~yamada/index.html">山田(啓)研HP</a></li>
+                <li><a href="https://github.com/RyoTsuiki/RakugakiBattle">Github</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="row container">
+
+        <h3>ようこそ</h3>
+        <p>ここでは機械学習を用いて絵の種類を判定します</p>
+
+        <div class="col s4">
+            <!-- Promo Content 1 goes here -->
+            <img src="../static/img/art.png" alt="">
+            <h5>What is RakugakiBattle ?</h5>
+            <p>お絵かき対戦ゲーム</p>
+        </div>
+        <div class="col s4">
+            <!-- Promo Content 2 goes here -->
+            <img src="../static/img/shinapus.png" alt="">
+            <h5>What is AI ?</h5>
+            <p>機械学習</p>
+        </div>
+        <div class="col s4">
+            <!-- Promo Content 3 goes here -->
+            <img src="../static/img/html.png" alt="">
+            <h5>Program information</h5>
+            <p>here</p>
+        </div>
+
     </div>
-    {% endfor %}
+
 </body>
 
 </html>
