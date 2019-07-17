@@ -724,3 +724,50 @@ if __name__ == "__main__":
 
 今回は [Materialize](<https://materializecss.com/>) を使用してみる.
 
+### 10.1 導入
+
+CDN で導入する [公式URL](<https://materializecss.com/getting-started.html>)
+
+```html
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+```
+
+```<head>```  に追加する
+
+実際に上手く動くかテストしてみる.
+
+各要素をカード状にして, かつ文字の色を変えてみる.
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <title>Flask-Project</title>
+</head>
+
+<body>
+    {% for name in name_list %}
+    <div class="card-panel">
+        <span class="blue-text text-darken-2">{{ name }}</span>
+    </div>
+    {% endfor %}
+</body>
+
+</html>
+```
+
