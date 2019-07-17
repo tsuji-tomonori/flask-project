@@ -11,7 +11,7 @@
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-    <title>RakugakiBattle</title>
+    <title>{{ model_name }}</title>
 </head>
 
 <body>
@@ -29,29 +29,25 @@
         </div>
     </nav>
     <div class="row container">
+        <table class="striped">
+            <thead>
+                <tr>
+                    {% for head in heads %}
+                    <th>{{ head }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
 
-        <h3>ようこそ</h3>
-        <p>ここでは機械学習を用いて絵の種類を判定します</p>
-
-        <div class="col s4">
-            <!-- Promo Content 1 goes here -->
-            <img src="../static/img/art.png" alt="">
-            <h5>What is RakugakiBattle ?</h5>
-            <p>お絵かき対戦ゲーム</p>
-        </div>
-        <div class="col s4">
-            <!-- Promo Content 2 goes here -->
-            <img src="../static/img/shinapus.png" alt="">
-            <h5>What is AI ?</h5>
-            <p>機械学習</p>
-        </div>
-        <div class="col s4">
-            <!-- Promo Content 3 goes here -->
-            <img src="../static/img/html.png" alt="">
-            <h5>Program information</h5>
-            <p>here</p>
-        </div>
-
+            <tbody>
+                {% for value in value_list %}
+                <tr>
+                    {% for x in value %}
+                    <th>{{ x }}</th>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
     </div>
 
 </body>

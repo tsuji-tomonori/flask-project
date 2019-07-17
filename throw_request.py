@@ -3,7 +3,7 @@ import urllib.request
 import urllib.parse
 import sys
 
-URL = "http://192.168.10.9:8888/"
+URL = "http://192.168.10.9:8888/log"
 
 
 def get_request(params):
@@ -39,7 +39,9 @@ def post_request(data):
 
 
 if __name__ == "__main__":
-    args = sys.argv[1:]
-    data = {"post_value": args[0], }
+    data = {'odai': 'banana', 'pre': 'banana', 'axe': 0,
+            'airplane': 1, 'apple': 2, 'banana': 3,
+            'bicycle': 4, 'car': 5, 'donut': 6,
+            'fish': 7, 'hat': 8, 'house': 9}
     post_request(data)
     print("post data", data)
