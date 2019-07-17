@@ -6,16 +6,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
     <title>Flask-Project</title>
 </head>
 
 <body>
-    <form action="/test" method="get">
-        <button name="get_value" value="from get">get submit</button>
-    </form>
-    <form action="/test" method="post">
-        <button name="post_value" value="from post">get submit</button>
-    </form>
+    {% for name in name_list %}
+    <p>{{ name }}</p>
+    {% endfor %}
 </body>
 
 </html>

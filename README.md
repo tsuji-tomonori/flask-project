@@ -590,3 +590,128 @@ if __name__ == "__main__":
 
 リロードせずにページを更新 (想像以上に知らないことが多かった)
 
+### 9.1 コードの変更
+
+```python
+# server.py
+from flask import Flask, render_template, request
+
+app = Flask(__name__)
+
+name_list = ["taro", "jiro"]
+
+
+@app.route("/")
+def index():
+    return render_template("index.html", name_list=name_list)
+
+
+@app.route("/", methods=["POST"])
+def test():
+    res = request.form["post_value"]
+    global name_list
+    name_list.append(res)
+    return render_template("index.html", name_list=name_list)
+
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run(host="0.0.0.0", port=8888)
+```
+
+name_list に POST で受け取った値を追加した. その後 html を返す.
+
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="{{url_for('static', filename='index.js')}}"></script>
+    <title>Flask-Project</title>
+</head>
+
+<body>
+    {% for name in name_list %}
+    <p>{{ name }}</p>
+    {% endfor %}
+</body>
+
+</html>
+```
+
+受け取った name_list を順に表示
+
+```javascript
+// index.js
+// reloadの応用方法
+// キャッシュを利用してリロードする方法
+function doReloadWithCache() {
+
+    // キャッシュを利用してリロード
+    window.location.reload(false);
+
+}
+
+window.addEventListener('load', function () {
+
+    // ページ表示完了した5秒後にリロード
+    setTimeout(doReloadWithCache, 5000);
+
+});
+```
+
+[参考URL](<https://www.sejuku.net/blog/25316>) せめて自動でリロードさせるために 5s ごとに キャッシュを利用してリロード.
+
+```python
+# throw_request.py
+import urllib.request
+import urllib.parse
+import sys
+
+URL = "" # URL 記述
+
+
+def get_request(params):
+    """ GET リクエストをサーバに投げる関数.
+
+    Args:
+        params (dict): リクエストパラメータ
+
+    Return:
+        str: サーバから受け取った文字列
+    """
+    req = urllib.request.Request('{}?{}'.format(
+        URL, urllib.parse.urlencode(params)))
+    with urllib.request.urlopen(req) as res:
+        body = res.read()
+    return body.decode("utf-8")
+
+
+def post_request(data):
+    """ POST リクエストをサーバに投げる関数.
+
+    Args:
+        data (dict): リクエストパラメータ
+
+    Reutrn:
+        str: サーバから受け取った文字列
+    """
+    data = urllib.parse.urlencode(data).encode('utf-8')
+    req = urllib.request.Request(URL, data=data)
+    with urllib.request.urlopen(req) as res:
+        body = res.read().decode()
+    return body
+
+
+if __name__ == "__main__":
+    args = sys.argv[1:]
+    data = {"post_value": args[0], }
+    post_request(data)
+    print("post data", data)
+```
+
+コマンドライン引数に入力された値を POST するように変更.
