@@ -1,55 +1,28 @@
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="ja">
+<!-- model.html -->
+{% extends "layout.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% block title %}
+{{ model_name }}
+{% endblock %}
 
-    <title>{{ model_name }}</title>
-</head>
+{% block content %}
+<table class="striped">
+    <thead>
+        <tr>
+            {% for head in heads %}
+            <th>{{ head }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
 
-<body>
-    <nav class="#26a69a teal lighten-1" id="header">
-        <div class="nav-wrapper #26a69a teal lighten-1 container">
-            <a href="/" class="brand-logo">Rakugaki Battle</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="">model info</a></li>
-                <li><a href="/log">log</a></li>
-                <li><a href="">Ranking</a></li>
-                <li><a href="https://quickdraw.withgoogle.com/">quickdraw</a></li>
-                <li><a href="http://www-ie.meijo-u.ac.jp/~yamada/index.html">山田(啓)研HP</a></li>
-                <li><a href="https://github.com/RyoTsuiki/RakugakiBattle">Github</a></li>
-            </ul>
-        </div>
-    </nav>
-    <div class="row container">
-        <table class="striped">
-            <thead>
-                <tr>
-                    {% for head in heads %}
-                    <th>{{ head }}</th>
-                    {% endfor %}
-                </tr>
-            </thead>
-
-            <tbody>
-                {% for value in value_list %}
-                <tr>
-                    {% for x in value %}
-                    <th>{{ x }}</th>
-                    {% endfor %}
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
-
-</body>
-
-</html>
+    <tbody>
+        {% for value in value_list %}
+        <tr>
+            {% for x in value %}
+            <th>{{ x }}</th>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

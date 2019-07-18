@@ -1,16 +1,8 @@
 // index.js
-// reloadの応用方法
-// キャッシュを利用してリロードする方法
-function doReloadWithCache() {
+(function ($) {
+    $(function () {
 
-    // キャッシュを利用してリロード
-    window.location.reload(false);
+        $(".dropdown-trigger").dropdown();
 
-}
-
-window.addEventListener('load', function () {
-
-    // ページ表示完了した5秒後にリロード
-    setTimeout(doReloadWithCache, 5000);
-
-});
+    });
+})(jQuery);
