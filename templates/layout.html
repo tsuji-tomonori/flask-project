@@ -23,8 +23,8 @@
 <body>
     <!-- Dropdown Structure -->
     <ul id="dropdown1" class="dropdown-content">
-        <li><a href="/log">model1</a></li>
-        <li><a href="#!">model2</a></li>
+        <li><a href="/log/model1">model1</a></li>
+        <li><a href="/log/model2">model2</a></li>
     </ul>
     <nav class="#26a69a teal lighten-1" id="header">
         <div class="nav-wrapper #26a69a teal lighten-1 container">
@@ -39,6 +39,8 @@
                 <!-- Dropdown Trigger -->
             </ul>
         </div>
+        {% block nav %}
+        {% endblock %}
     </nav>
     <div class="row container">
         {% block content %}
