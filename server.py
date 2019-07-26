@@ -14,6 +14,14 @@ labels = {}
 def index():
     return render_template("index.html")
 
+@app.route("/What is RakugakiBattle")
+def what_is_rakugakibattle():
+    return render_template("rakugakibattle.html")
+
+@app.route("/What is AI")
+def what_is_ai():
+    return render_template("ml.html")
+
 
 @app.route("/log/<model_name>", methods=["POST", "GET"])
 def log_model(model_name):
