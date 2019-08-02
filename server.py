@@ -22,10 +22,13 @@ def what_is_rakugakibattle():
 def what_is_ai():
     return render_template("ml.html")
 
+<<<<<<< HEAD
 @app.route("/Program information")
 def Program_information():
     return render_template("prog.html")
 
+=======
+>>>>>>> b2212a272232be8dbbc0f5687c996c9800346560
 
 @app.route("/log/<model_name>", methods=["POST", "GET"])
 def log_model(model_name):
