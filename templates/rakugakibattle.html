@@ -1,0 +1,24 @@
+<!-- rakugakibattle.html -->
+{% extends "layout.html" %}
+
+{% block title %}
+{{ model_name }}
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block content %}
+<h3>ゲーム内容</h3>
+<p>制限時間内にお題について落書き</p>
+<p>その絵を機械が判定し, そのスコアで競う!!</p>
+<h3>ゲームの流れ</h3>
+<p><img src='../static/img/overall_view.png' alt='' referrerPolicy='no-referrer' /></p>
+<ol>
+<li>お題が出される</li>
+<li>制限時間まで落書き</li>
+<li>機械がスコアを計算 &lt;- ここに機械学習</li>
+<li>スコアが高いほうが勝利</li>
+
+</ol>
+{% endblock %}

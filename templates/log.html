@@ -1,0 +1,34 @@
+<!-- log.html -->
+{% extends "layout.html" %}
+
+{% block title %}
+{{ model_name }}
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block content %}
+<h3>{{ model_name }}</h3>
+<h4>正答率 : {{ acc }} 　　平均スコア : {{ ave }}</h4>
+<hr>
+<table class="striped">
+    <thead>
+        <tr>
+            {% for head in heads %}
+            <th>{{ head }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for value in value_list %}
+        <tr>
+            {% for x in value %}
+            <th>{{ x }}</th>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

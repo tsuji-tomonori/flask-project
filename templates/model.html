@@ -9,26 +9,24 @@
 {% endblock %}
 
 {% block content %}
-<h3>{{ model_name }}</h3>
-<h4>正答率 : {{ acc }} 　　平均スコア : {{ ave }}</h4>
+<h3>moel info</h3>
 <hr>
 <table class="striped">
     <thead>
         <tr>
-            {% for head in heads %}
+            {% for head in info.keys() %}
             <th>{{ head }}</th>
             {% endfor %}
         </tr>
     </thead>
 
     <tbody>
-        {% for value in value_list %}
         <tr>
-            {% for x in value %}
+            {% for x in info.values() %}
             <th>{{ x }}</th>
             {% endfor %}
         </tr>
-        {% endfor %}
     </tbody>
 </table>
+
 {% endblock %}
